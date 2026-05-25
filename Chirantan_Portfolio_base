@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chirantan Dutta Banik — Marketing Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>  
+:root {
+    --black: #0A0A0A;
+    --black2: #111111;
+    --black3: #1a1a1a;
+    --red: #eb0d0d;
+    --red-dim: rgba(235,13,13,0.15);
+    --azure: #0080FE;
+    --azure-dim: rgba(0,128,254,0.15);
+    --white: #ffffff;
+    --white80: rgba(255,255,255,0.8);
+    --white40: rgba(255,255,255,0.4);
+    --white12: rgba(255,255,255,0.12);
+    --white06: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── CANVAS BACKGROUND ── */
+  #bg-canvas {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none;
+  }
+ 
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(10,10,10,0.85);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+  }
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px; letter-spacing: 0.15em; color: var(--red);
+    text-transform: uppercase; font-weight: 700;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 12px; font-weight: 400; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--white40); transition: color 0.2s;
+    position: relative;
+  }
+ .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+    background: var(--azure); transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { width: 100%; }
+ 
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh; position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    padding: 6rem 4rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+    border-right: 1px solid var(--border);
+  }
+  .hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--azure); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+    animation: fadeUp 0.7s ease both 0.1s;
+  }
+  .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--azure); display: block; }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 900; line-height: 1.0;
+    color: var(--white); letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.7s ease both 0.2s;
+  }
+  .hero-name span { color: var(--red); font-style: italic; }
+  .hero-desc {
+    font-size: 1.05rem; color: var(--white40);
+    max-width: 480px; line-height: 1.8; margin-bottom: 2.5rem;
+    animation: fadeUp 0.7s ease both 0.35s;
+  }
+  .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.7s ease both 0.45s; }
+ 
+  .btn-primary {
+    display: inline-block; background: var(--red); color: var(--white);
+    padding: 0.85rem 2rem; font-size: 12px;
+    letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+    font-weight: 500; transition: all 0.25s;
+    transform-style: preserve-3d; perspective: 600px;
+    position: relative; overflow: hidden;
+  }
+  .btn-primary::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--azure); transform: translateX(-100%); transition: transform 0.35s;
+  }
+  .btn-primary:hover::before { transform: translateX(0); }
+  .btn-primary span { position: relative; z-index: 1; }
+  .btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 28px rgba(235,13,13,0.4); }
+ 
+  .btn-outline {
+    display: inline-block; border: 1px solid var(--white40); color: var(--white);
+    padding: 0.85rem 2rem; font-size: 12px;
+    letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+    font-weight: 400; transition: all 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--azure); color: var(--azure); transform: translateY(-2px); }
+ 
+  .hero-right {
+    padding: 6rem 4rem 4rem;
+    display: flex; flex-direction: column; justify-content: space-between;
+    background: var(--black2);
+    animation: fadeUp 0.7s ease both 0.3s;
+  }
+  .hero-stats { display: flex; flex-direction: column; gap: 2.5rem; margin-top: auto; }
+  .stat-item {
+    border-left: 2px solid var(--red); padding-left: 1.25rem;
+    transform-style: preserve-3d; perspective: 400px;
+    transition: transform 0.3s;
+  }
+  .stat-item:hover { transform: translateX(6px); }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; font-weight: 700; line-height: 1; color: var(--white);
+  }
+  .stat-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white40); margin-top: 4px; }
+  .hero-location {
+    font-family: 'Space Mono', monospace; font-size: 11px; color: var(--white40);
+  }
+  .hero-location::before { content: '◈  '; color: var(--azure); }
+ 
+  /* ── SECTION BASE ── */
+  section { padding: 5rem 4rem; border-bottom: 1px solid var(--border); position: relative; z-index: 1; }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--azure); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--azure); }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700;
+    line-height: 1.1; color: var(--white); margin-bottom: 3rem;
+  }
+  .section-title em { font-style: italic; color: var(--red); }
+ 
+  /* ── ABOUT ── */
+  #about { background: var(--black2); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .about-bio { font-size: 1.05rem; line-height: 1.9; color: var(--white80); }
+  .about-bio p + p { margin-top: 1.25rem; }
+  .about-details { display: flex; flex-direction: column; gap: 1.5rem; }
+  .detail-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding-bottom: 1.25rem; border-bottom: 1px solid var(--border);
+  }
+  .detail-row:last-child { border-bottom: none; }
+  .detail-key { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--azure); }
+  .detail-val { font-size: 13px; color: var(--white80); text-align: right; max-width: 220px; }
+ 
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--black); }
+  .exp-list { display: flex; flex-direction: column; }
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-item:hover { background: var(--black2); padding-left: 1rem; padding-right: 1rem; margin: 0 -1rem; }
+  .exp-period { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--white40); margin-bottom: 0.4rem; }
+  .exp-company { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+  .exp-badge {
+    display: inline-block; margin-top: 0.75rem;
+    background: var(--red); color: var(--white);
+    font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px;
+  }
+  .exp-badge.intern { background: transparent; color: var(--azure); border: 1px solid var(--azure); }
+  .exp-role { font-size: 1.15rem; font-weight: 500; color: var(--white); margin-bottom: 0.75rem; }
+  .exp-points { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .exp-points li {
+    font-size: 0.925rem; color: var(--white40); line-height: 1.6;
+    padding-left: 1.25rem; position: relative;
+  }
+  .exp-points li::before { content: '▸'; position: absolute; left: 0; color: var(--azure); font-size: 10px; top: 5px; }
+  .exp-highlight {
+    display: inline-block; margin-top: 1rem;
+    font-family: 'Space Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 0.05em;
+  }
+ 
+  /* ── SKILLS (3D CARDS) ── */
+  #skills { background: var(--black2); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .skill-card {
+    padding: 1.75rem; border: 1px solid var(--border);
+    background: var(--black); cursor: default;
+    transform-style: preserve-3d; perspective: 800px;
+    transition: transform 0.1s, box-shadow 0.3s, border-color 0.3s;
+    will-change: transform;
+  }
+  .skill-card:hover { border-color: var(--azure); box-shadow: 0 20px 40px rgba(0,128,254,0.15), 0 0 0 1px rgba(0,128,254,0.2); }
+  .skill-card-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+  .skill-card-title { font-size: 11px; font-weight: 500; color: var(--white); margin-bottom: 1rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag {
+    font-size: 10px; padding: 3px 10px;
+    background: var(--white06); color: var(--white40);
+    border: 1px solid var(--border); transition: all 0.2s;
+  }
+  .skill-card:hover .skill-tag { background: var(--azure-dim); color: rgba(0,128,254,0.9); border-color: rgba(0,128,254,0.3); }
+ 
+  /* ── PROJECTS (3D FLIP) ── */
+  #projects { background: var(--black); }
+  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .project-wrap { perspective: 1000px; height: 220px; }
+  .project-card-inner {
+    width: 100%; height: 100%; position: relative;
+    transform-style: preserve-3d; transition: transform 0.65s cubic-bezier(0.4,0,0.2,1);
+    cursor: pointer;
+  }
+  .project-wrap:hover .project-card-inner { transform: rotateY(180deg); }
+  .project-face {
+    position: absolute; inset: 0; backface-visibility: hidden;
+    padding: 1.75rem; border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .project-face.front { background: var(--black2); }
+  .project-face.front::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%; background: var(--red);
+  }
+  .project-face.back {
+    background: linear-gradient(135deg, #0A0A0A 0%, #0d1a2e 100%);
+    border-color: var(--azure); transform: rotateY(180deg);
+    display: flex; flex-direction: column; justify-content: center;
+    border-left: 3px solid var(--azure);
+  }
+  .project-num { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--red); text-transform: uppercase; margin-bottom: 0.6rem; }
+  .project-title { font-size: 0.95rem; font-weight: 500; color: var(--white); line-height: 1.4; margin-bottom: 0.5rem; }
+  .project-obj { font-size: 0.82rem; color: var(--white40); line-height: 1.55; }
+  .project-outcome { font-size: 0.82rem; color: rgba(0,200,255,0.9); line-height: 1.55; }
+  .project-outcome-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--azure); text-transform: uppercase; margin-bottom: 0.5rem; }
+  .flip-hint { font-size: 9px; color: var(--white40); font-family: 'Space Mono', monospace; letter-spacing: 0.1em; margin-top: 0.75rem; }
+ 
+  /* ── CERTIFICATIONS ── */
+  #certifications { background: var(--black2); }
+  .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+  .cert-item {
+    background: var(--black2); padding: 1.5rem;
+    transition: background 0.2s, transform 0.2s;
+    border: 1px solid transparent;
+  }
+  .cert-item:hover { background: var(--black3); border-color: var(--red); transform: scale(1.02); z-index: 2; }
+  .cert-name { font-size: 0.88rem; color: var(--white); margin-bottom: 0.4rem; }
+  .cert-issuer { font-size: 11px; color: var(--azure); font-family: 'Space Mono', monospace; letter-spacing: 0.05em; }
+  .cert-year { font-size: 10px; color: var(--white40); margin-top: 0.25rem; }
+ 
+  /* ── HOBBIES (3D TILT) ── */
+  #hobbies { background: var(--black); }
+  .hobbies-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .hobby-card {
+    padding: 2.5rem 2rem; text-align: center;
+    border: 1px solid var(--border); background: var(--black2);
+    transform-style: preserve-3d; perspective: 600px;
+    will-change: transform; transition: box-shadow 0.3s, border-color 0.3s;
+    cursor: default;
+  }
+  .hobby-card:hover { border-color: var(--red); box-shadow: 0 20px 50px rgba(235,13,13,0.2); }
+  .hobby-icon { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; }
+  .hobby-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+  .hobby-desc { font-size: 0.88rem; color: var(--white40); line-height: 1.6; }
+  .hobby-badge {
+    display: inline-block; margin-top: 0.75rem;
+    font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--red); padding: 3px 10px; border: 1px solid var(--red);
+  }
+ 
+  /* ── EDUCATION ── */
+  #education { background: var(--black2); }
+  .edu-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .edu-item {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 1.75rem; background: var(--black); border: 1px solid var(--border);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .edu-item:hover { border-color: var(--azure); transform: translateX(8px); }
+  .edu-inst { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+  .edu-degree { font-size: 0.875rem; color: var(--white40); margin-top: 0.3rem; }
+  .edu-score { font-family: 'Space Mono', monospace; font-size: 1.5rem; font-weight: 700; color: var(--azure); text-align: right; }
+  .edu-year { font-size: 10px; color: var(--white40); text-align: right; margin-top: 0.25rem; }
+ 
+  /* ── CONTACT ── */
+  #contact { background: var(--black); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .contact-text { font-size: 1.05rem; color: var(--white40); line-height: 1.8; }
+  .contact-links { display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.25rem; border: 1px solid var(--border);
+    text-decoration: none; transition: all 0.25s; background: var(--black2);
+  }
+  .contact-link:hover { border-color: var(--azure); background: var(--azure-dim); transform: translateX(6px); }
+  .contact-link-icon {
+    width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+    background: var(--red-dim); font-size: 15px; color: var(--red); flex-shrink: 0;
+  }
+  .contact-link-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--azure); display: block; margin-bottom: 2px; }
+  .contact-link-val { font-size: 13px; color: var(--white); }
+ 
+  /* ── FOOTER ── */
+  footer {
+    background: #050505; color: var(--white40);
+    text-align: center; padding: 2rem 4rem;
+    font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em;
+    position: relative; z-index: 1;
+  }
+  footer span { color: var(--red); }
+ 
+  /* ── REVEAL ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left {
+    opacity: 0; transform: translateX(-40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+ 
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+ 
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 5rem 1.5rem 3rem; }
+    section { padding: 3.5rem 1.5rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-grid, .cert-grid { grid-template-columns: 1fr 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .hobbies-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .edu-item { flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+ 
+<!-- ANIMATED BACKGROUND -->
+<canvas id="bg-canvas"></canvas>
+ 
+<nav>
+  <span class="nav-logo">CDB</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+ 
+<!-- HERO -->
+<section id="hero" style="padding:0; border:none;">
+  <div class="hero-left">
+    <div class="hero-tag">Marketing Professional</div>
+    <h1 class="hero-name">Chirantan<br>Dutta <span>Banik</span></h1>
+    <p class="hero-desc">B2B Sales specialist and growth marketer with hands-on experience in paid advertising, SEO, content strategy, and marketing automation. Driven by data, energised by creative problem-solving.</p>
+    <div class="hero-cta-row">
+      <a href="#experience" class="btn-primary"><span>View Work</span></a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-location">Kolkata, West Bengal, India</div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num" data-count="50">₹50L+</div>
+        <div class="stat-label">Revenue Generated</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Ad Campaigns Audited</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5×</div>
+        <div class="stat-label">Website Traffic Growth</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3×</div>
+        <div class="stat-label">Lead Conversion Improvement</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label reveal">About Me</div>
+  <h2 class="section-title reveal">Marketer. <em>Builder.</em> Adventurer.</h2>
+  <div class="about-grid">
+    <div class="about-bio reveal">
+      <p>I am a Marketing professional with hands-on experience across the full digital marketing stack — from auditing and optimising Google & Meta Ads campaigns to leading B2B sales pipelines with Salesforce CRM.</p>
+      <p>Currently working as a Relationship Manager at Mittsure Technologies, I drive end-to-end B2B sales in the EdTech sector, generating ₹50+ lakhs in revenue while managing school partnerships across Kolkata.</p>
+      <p>I hold a PGDM in Marketing from Jagdish Sheth School of Management (JAGSoM), Bengaluru, where I built expertise across marketing analytics, brand management, consumer behaviour, and retail management.</p>
+      <p>Off the desk, I play competitive cricket (CAB Under-17), go on long mountain bike expeditions, and chase moments with a camera lens.</p>
+    </div>
+    <div class="about-details reveal-left">
+      <div class="detail-row"><span class="detail-key">Location</span><span class="detail-val">Kolkata, West Bengal, India</span></div>
+      <div class="detail-row"><span class="detail-key">Education</span><span class="detail-val">PGDM Marketing — JAGSoM, 2025</span></div>
+      <div class="detail-row"><span class="detail-key">Current Role</span><span class="detail-val">Relationship Manager — Mittsure</span></div>
+      <div class="detail-row"><span class="detail-key">Specialisation</span><span class="detail-val">B2B Sales, Digital Marketing, Lead Generation</span></div>
+      <div class="detail-row"><span class="detail-key">Languages</span><span class="detail-val">English · Bengali · Hindi</span></div>
+      <div class="detail-row"><span class="detail-key">Open To</span><span class="detail-val">Full-Time Marketing & Sales Roles</span></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label reveal">Experience</div>
+  <h2 class="section-title reveal">Where I've <em>Made an Impact</em></h2>
+  <div class="exp-list">
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Jul 2025 – Present</div>
+        <div class="exp-company">Mittsure Technologies</div>
+        <div class="exp-badge">Full Time</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Relationship Manager — Kolkata</div>
+        <ul class="exp-points">
+          <li>Drive end-to-end B2B sales for academic books, ERP software, Olympiad programs, and digital learning products targeting schools.</li>
+          <li>Generate leads via multi-channel outreach — cold calling, email campaigns, and direct field visits to decision-makers.</li>
+          <li>Manage a structured sales funnel using Salesforce CRM for pipeline tracking, follow-ups, and conversion analysis.</li>
+          <li>Manage distributor relationships and analyse distributor health to optimise performance and streamline processes.</li>
+          <li>Lead negotiations on pricing and close deals aligned with institutional needs and business objectives.</li>
+        </ul>
+        <span class="exp-highlight">★ ₹50+ Lakhs revenue generated within tenure</span>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Jun – Dec 2025</div>
+        <div class="exp-company">NYX.today</div>
+        <div class="exp-badge intern">Internship</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Growth Marketing Manager (Remote)</div>
+        <ul class="exp-points">
+          <li>Audited 50+ client campaigns on Google Ads & Meta Ads; identified budgeting issues, creative fatigue, and performance gaps.</li>
+          <li>Managed ad budgets of ₹50K–₹1L/month aligned with brand stage, industry trends, and measurable growth goals.</li>
+          <li>Led SEO growth through keyword research, performance blog writing, and backlink building.</li>
+          <li>Built an Auto Audit System and an AI Campaign Planner that auto-generates strategies with ROI estimates.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Feb – May 2025</div>
+        <div class="exp-company">LEJHRO</div>
+        <div class="exp-badge intern">Internship</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Digital Marketing Intern (Remote)</div>
+        <ul class="exp-points">
+          <li>Led SEO, social media, email, and lead generation strategies to boost digital presence across platforms.</li>
+          <li>Grew website impressions from 1.5K to 5.5K+ daily; Instagram +415%, LinkedIn +2K, Facebook +1K.</li>
+          <li>Generated qualified leads via LinkedIn Sales Navigator, Apollo.io, and Lusha; conversion rate 5% → 15%.</li>
+          <li>Secured two B2B partnerships worth ₹10 lakhs and launched email campaigns driving enrollment.</li>
+        </ul>
+        <span class="exp-highlight">★ 5.5K+ daily impressions · Conversion 5% → 15%</span>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Nov 2024 – Jan 2025</div>
+        <div class="exp-company">Mobility Aftermarket</div>
+        <div class="exp-badge intern">Internship</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Market Research Intern — Bengaluru</div>
+        <ul class="exp-points">
+          <li>Conducted field research across two-wheelers, autorickshaws, passenger vehicles, tractors, and JCBs.</li>
+          <li>Gathered structured data on aftermarket vs. original spare parts usage, pricing, and replacement frequency.</li>
+          <li>Compiled a comprehensive market trends and consumer insights report across all segments.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label reveal">Core Skills</div>
+  <h2 class="section-title reveal">Tools of <em>the Trade</em></h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal"><div class="skill-card-icon">📈</div><div class="skill-card-title">B2B Sales & CRM</div><div class="skill-tags"><span class="skill-tag">Salesforce CRM</span><span class="skill-tag">Pipeline Mgmt</span><span class="skill-tag">Cold Calling</span><span class="skill-tag">Lead Qualification</span><span class="skill-tag">Negotiation</span><span class="skill-tag">Follow-up Mgmt</span></div></div>
+    <div class="skill-card reveal"><div class="skill-card-icon">🎯</div><div class="skill-card-title">Digital Advertising</div><div class="skill-tags"><span class="skill-tag">Google Ads</span><span class="skill-tag">Meta Ads</span><span class="skill-tag">Campaign Audits</span><span class="skill-tag">Budget Mgmt</span><span class="skill-tag">Performance Max</span><span class="skill-tag">Ad Creative</span></div></div>
+    <div class="skill-card reveal"><div class="skill-card-icon">🔍</div><div class="skill-card-title">SEO & Content</div><div class="skill-tags"><span class="skill-tag">Keyword Research</span><span class="skill-tag">Blog Writing</span><span class="skill-tag">Backlink Building</span><span class="skill-tag">On-page SEO</span><span class="skill-tag">Content Strategy</span></div></div>
+    <div class="skill-card reveal"><div class="skill-card-icon">📊</div><div class="skill-card-title">Data & Analytics</div><div class="skill-tags"><span class="skill-tag">Google Analytics</span><span class="skill-tag">Power BI</span><span class="skill-tag">Advanced Excel</span><span class="skill-tag">Data Visualisation</span><span class="skill-tag">Python</span></div></div>
+    <div class="skill-card reveal"><div class="skill-card-icon">🤝</div><div class="skill-card-title">Lead Generation</div><div class="skill-tags"><span class="skill-tag">LinkedIn Sales Nav</span><span class="skill-tag">Apollo.io</span><span class="skill-tag">Lusha</span><span class="skill-tag">Email Outreach</span><span class="skill-tag">Cold Prospecting</span></div></div>
+    <div class="skill-card reveal"><div class="skill-card-icon">🧠</div><div class="skill-card-title">Marketing Strategy</div><div class="skill-tags"><span class="skill-tag">Brand Management</span><span class="skill-tag">Market Research</span><span class="skill-tag">Social Listening</span><span class="skill-tag">Consumer Behaviour</span><span class="skill-tag">Distributor Mgmt</span></div></div>
+  </div>
+</section>
+ 
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label reveal">Academic Projects</div>
+  <h2 class="section-title reveal">Building <em>Real-World</em> Solutions</h2>
+  <p style="font-size:11px;color:var(--white40);font-family:'Space Mono',monospace;letter-spacing:0.1em;margin-bottom:2rem;" class="reveal">↻ HOVER CARDS TO FLIP & SEE OUTCOMES</p>
+  <div class="projects-grid">
+ 
+    <div class="project-wrap reveal">
+      <div class="project-card-inner">
+        <div class="project-face front"><div class="project-num">Project 01 · Social Media Marketing</div><div class="project-title">Unleash Fitness — Campaign Strategy & Execution</div><div class="project-obj">Developed a full social media marketing plan with audience analysis, competitor research, and content creation for Instagram and Facebook.</div><div class="flip-hint">hover to see outcome →</div></div>
+        <div class="project-face back"><div class="project-outcome-label">Outcome</div><div class="project-outcome">📣 686,592 reach in one week · ₹1.51 cost/result (men) · ₹1.18 (women) · High engagement in 18–25 and 35–45 age groups</div></div>
+      </div>
+    </div>
+ 
+    <div class="project-wrap reveal">
+      <div class="project-card-inner">
+        <div class="project-face front"><div class="project-num">Project 02 · Marketing Analytics</div><div class="project-title">Bluestone — Social Listening & Brand Analysis</div><div class="project-obj">Comprehensive social media analysis vs. competitors using social listening tools, with strategic recommendations to improve engagement.</div><div class="flip-hint">hover to see outcome →</div></div>
+        <div class="project-face back"><div class="project-outcome-label">Outcome</div><div class="project-outcome">💎 3,674 mentions · 61.7% market share · 961,518 engagements · Influencer partnership & sustainability recommendations</div></div>
+      </div>
+    </div>
+ 
+    <div class="project-wrap reveal">
+      <div class="project-card-inner">
+        <div class="project-face front"><div class="project-num">Project 03 · Managing Online Stores</div><div class="project-title">Ashkev Health & Beauty — D2C Marketing Strategy</div><div class="project-obj">Positioned Ashkev as a premier online health brand specialising in chemical-free, coconut-based products with targeted marketing strategies.</div><div class="flip-hint">hover to see outcome →</div></div>
+        <div class="project-face back"><div class="project-outcome-label">Outcome</div><div class="project-outcome">🥥 Coco Glow Face Serum: ₹3.49L revenue · Performance Max: 12,791 impressions · 485 interactions</div></div>
+      </div>
+    </div>
+ 
+    <div class="project-wrap reveal">
+      <div class="project-card-inner">
+        <div class="project-face front"><div class="project-num">Project 04 · Sales & Distribution</div><div class="project-title">Multi-Brand Distributor Health Analysis</div><div class="project-obj">Analysed distributor business operations for Rite Bite Max Protein, Godrej Cosmetics, Continental Coffee, and Naturals.</div><div class="flip-hint">hover to see outcome →</div></div>
+        <div class="project-face back"><div class="project-outcome-label">Outcome</div><div class="project-outcome">💼 ₹48.1L net investment · 16% annual ROI · ₹50L monthly sales · Margins 15–35% across products</div></div>
+      </div>
+    </div>
+ 
+    <div class="project-wrap reveal">
+      <div class="project-card-inner">
+        <div class="project-face front"><div class="project-num">Project 05 · Brand Management</div><div class="project-title">Rahaat — Eco-Friendly Period Pamper Box</div><div class="project-obj">Developed a comprehensive marketing strategy for an eco-friendly menstrual wellness brand, targeting millennial and Gen Z women.</div><div class="flip-hint">hover to see outcome →</div></div>
+        <div class="project-face back"><div class="project-outcome-label">Outcome</div><div class="project-outcome">🌿 Full brand identity created · Market research executed · Clear value proposition for sustainability-conscious consumers</div></div>
+      </div>
+    </div>
+ 
+    <div class="project-wrap reveal">
+      <div class="project-card-inner">
+        <div class="project-face front"><div class="project-num">Project 06 · Design Thinking</div><div class="project-title">Narayana Health Care — Patient Experience</div><div class="project-obj">Applied design thinking to improve patient satisfaction by streamlining appointment scheduling and enabling virtual consultations.</div><div class="flip-hint">hover to see outcome →</div></div>
+        <div class="project-face back"><div class="project-outcome-label">Outcome</div><div class="project-outcome">🏥 Target: +20% online bookings · −15% wait times · +10% patient satisfaction scores</div></div>
+      </div>
+    </div>
+ 
+    <div class="project-wrap reveal">
+      <div class="project-card-inner">
+        <div class="project-face front"><div class="project-num">Project 07 · Category Management</div><div class="project-title">Decathlon — Category & Pricing Strategy</div><div class="project-obj">Analysed Decathlon's retail and online category management, pricing consistency, and customer engagement strategies.</div><div class="flip-hint">hover to see outcome →</div></div>
+        <div class="project-face back"><div class="project-outcome-label">Outcome</div><div class="project-outcome">🏋️ Dynamic pricing tools identified · Online vs. in-store journey mapped · Community loyalty strategies documented</div></div>
+      </div>
+    </div>
+ 
+    <div class="project-wrap reveal">
+      <div class="project-card-inner">
+        <div class="project-face front"><div class="project-num">Project 08 · Brand Project</div><div class="project-title">IKONIC World — 10-Month Marketing Strategy</div><div class="project-obj">Comprehensive 10-month marketing strategy with ₹10 Crore budget focused on brand awareness and scaling D2C sales.</div><div class="flip-hint">hover to see outcome →</div></div>
+        <div class="project-face back"><div class="project-outcome-label">Outcome</div><div class="project-outcome">💡 ₹10Cr budget plan · Influencer + co-branding strategies · Performance benchmarks · Full content roadmap</div></div>
+      </div>
+    </div>
+ 
+  </div>
+</section>
+ 
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label reveal">Certifications</div>
+  <h2 class="section-title reveal">Credentials & <em>Learning</em></h2>
+  <div class="cert-grid">
+    <div class="cert-item reveal"><div class="cert-name">Digital Business Model</div><div class="cert-issuer">Lund University · Coursera</div><div class="cert-year">2023</div></div>
+    <div class="cert-item reveal"><div class="cert-name">Market Research & Consumer Behavior</div><div class="cert-issuer">IE Business School · Coursera</div><div class="cert-year">2024</div></div>
+    <div class="cert-item reveal"><div class="cert-name">Off-Premises Sales</div><div class="cert-issuer">Red Bull</div><div class="cert-year">2024</div></div>
+    <div class="cert-item reveal"><div class="cert-name">Advanced Google Analytics</div><div class="cert-issuer">Google Academy</div><div class="cert-year">2024</div></div>
+    <div class="cert-item reveal"><div class="cert-name">Google Ads Certified</div><div class="cert-issuer">Google Academy</div><div class="cert-year">2024</div></div>
+    <div class="cert-item reveal"><div class="cert-name">Data Visualisation & Business Intelligence</div><div class="cert-issuer">ED Lightened</div><div class="cert-year">2024</div></div>
+    <div class="cert-item reveal"><div class="cert-name">Client Engagement</div><div class="cert-issuer">Bloomberg</div><div class="cert-year">2024</div></div>
+    <div class="cert-item reveal"><div class="cert-name">Customer Value in Pricing Strategy</div><div class="cert-issuer">Coursera</div><div class="cert-year">2024</div></div>
+    <div class="cert-item reveal"><div class="cert-name">Marketing Analytics</div><div class="cert-issuer">Coursera</div><div class="cert-year">2024</div></div>
+  </div>
+</section>
+ 
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label reveal">Education</div>
+  <h2 class="section-title reveal">Academic <em>Foundation</em></h2>
+  <div class="edu-list">
+    <div class="edu-item reveal"><div><div class="edu-inst">Jagdish Sheth School of Management (JAGSoM)</div><div class="edu-degree">PGDM — Marketing</div></div><div><div class="edu-score">6.5 CGPA</div><div class="edu-year">2023 – 2025 · Bengaluru</div></div></div>
+    <div class="edu-item reveal"><div><div class="edu-inst">Future Institute of Engineering and Management</div><div class="edu-degree">Bachelor of Business Administration (BBA)</div></div><div><div class="edu-score">79.8%</div><div class="edu-year">2019 – 2022 · Kolkata</div></div></div>
+    <div class="edu-item reveal"><div><div class="edu-inst">Netaji Nagar Vidya Mandir</div><div class="edu-degree">Class XII — WBCHSE</div></div><div><div class="edu-score">56.4%</div><div class="edu-year">2019</div></div></div>
+  </div>
+</section>
+ 
+<!-- HOBBIES -->
+<section id="hobbies">
+  <div class="section-label reveal">Beyond Work</div>
+  <h2 class="section-title reveal">Passions that <em>Drive Me</em></h2>
+  <div class="hobbies-grid">
+    <div class="hobby-card reveal"><span class="hobby-icon">🏏</span><div class="hobby-title">Cricket</div><p class="hobby-desc">A lifelong passion that taught me discipline, strategy, and how to perform under pressure — in the crease and in the boardroom.</p><span class="hobby-badge">CAB Under-17 Player</span></div>
+    <div class="hobby-card reveal"><span class="hobby-icon">🏍️</span><div class="hobby-title">Bike Riding</div><p class="hobby-desc">Mountain trails, open highways, and high-altitude roads. Bike expeditions fuel my love for adventure and exploring the unknown.</p><span class="hobby-badge">Mountain Expedition Rider</span></div>
+    <div class="hobby-card reveal"><span class="hobby-icon">📷</span><div class="hobby-title">Photography</div><p class="hobby-desc">Capturing the quiet drama of natural landscapes and fleeting moments — a detail-oriented eye that carries into every campaign I build.</p><span class="hobby-badge">Nature & Travel Photography</span></div>
+  </div>
+</section>
+ 
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label reveal">Contact</div>
+  <h2 class="section-title reveal">Let's <em>Connect</em></h2>
+  <div class="contact-grid">
+    <div class="contact-text reveal">
+      <p>I'm currently open to full-time roles in marketing, B2B sales, and business development. Whether you're hiring, collaborating, or just want to talk strategy — I'd love to hear from you.</p>
+      <br>
+      <p style="color: var(--white40); font-size: 0.9rem;">Based in Kolkata, West Bengal, India. Open to remote and hybrid opportunities.</p>
+    </div>
+    <div class="contact-links reveal">
+      <a href="mailto:chirantanduttabanik123@gmail.com" class="contact-link"><div class="contact-link-icon">✉</div><div><span class="contact-link-label">Email</span><span class="contact-link-val">chirantanduttabanik123@gmail.com</span></div></a>
+      <a href="tel:+919903319465" class="contact-link"><div class="contact-link-icon">📞</div><div><span class="contact-link-label">Phone</span><span class="contact-link-val">+91 9903319465</span></div></a>
+      <a href="https://linkedin.com/in/chirantan-dutta-banik-0419761b2/" target="_blank" class="contact-link"><div class="contact-link-icon" style="font-weight:700;font-size:13px;">in</div><div><span class="contact-link-label">LinkedIn</span><span class="contact-link-val">chirantan-dutta-banik-0419761b2</span></div></a>
+    </div>
+  </div>
+</section>
+ 
+<footer><p>© 2025 <span>Chirantan Dutta Banik</span> &nbsp;·&nbsp; Marketing Professional, Kolkata</p></footer>
+ 
+<script>
+/* ═══════════════════════════════════════════
+   1. ANIMATED PARTICLE BACKGROUND (Three.js-like, pure Canvas)
+═══════════════════════════════════════════ */
+(function() {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], lines = [];
+  const COLORS = ['#eb0d0d', '#0080FE', 'rgba(255,255,255,0.5)'];
+  const N = 80;
+ 
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+ 
+  function rand(a, b) { return a + Math.random() * (b - a); }
+ 
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < N; i++) {
+      particles.push({
+        x: rand(0, W), y: rand(0, H),
+        vx: rand(-0.3, 0.3), vy: rand(-0.3, 0.3),
+        r: rand(1, 2.5),
+        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+        alpha: rand(0.2, 0.7)
+      });
+    }
+  }
+ 
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+ 
+    // Draw connecting lines between close particles
+    for (let i = 0; i < N; i++) {
+      for (let j = i + 1; j < N; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 140) {
+          const alpha = (1 - dist / 140) * 0.15;
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(0,128,254,${alpha})`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+ 
+    // Draw particles
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+ 
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+    });
+ 
+    requestAnimationFrame(draw);
+  }
+ 
+  window.addEventListener('resize', () => { resize(); initParticles(); });
+  resize();
+  initParticles();
+  draw();
+})();
+ 
+/* ═══════════════════════════════════════════
+   2. SCROLL REVEAL
+═══════════════════════════════════════════ */
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+ 
+  document.querySelectorAll('.reveal, .reveal-left').forEach(el => observer.observe(el));
+})();
+ 
+/* ═══════════════════════════════════════════
+   3. 3D TILT ON SKILL CARDS & HOBBY CARDS
+═══════════════════════════════════════════ */
+(function() {
+  function addTilt(selector, maxTilt) {
+    document.querySelectorAll(selector).forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) / (rect.width / 2);
+        const dy = (e.clientY - cy) / (rect.height / 2);
+        card.style.transform = `rotateY(${dx * maxTilt}deg) rotateX(${-dy * maxTilt}deg) scale(1.03)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+  addTilt('.skill-card', 12);
+  addTilt('.hobby-card', 8);
+})();
+ 
+/* ═══════════════════════════════════════════
+   4. MAGNETIC BUTTON EFFECT
+═══════════════════════════════════════════ */
+(function() {
+  document.querySelectorAll('.btn-primary, .btn-outline').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const rect = btn.getBoundingClientRect();
+      const dx = (e.clientX - rect.left - rect.width/2) * 0.25;
+      const dy = (e.clientY - rect.top - rect.height/2) * 0.25;
+      btn.style.transform = `translate(${dx}px, ${dy}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+})();
+ 
+/* ═══════════════════════════════════════════
+   5. GLITCH EFFECT ON HERO NAME (subtle)
+═══════════════════════════════════════════ */
+(function() {
+  const name = document.querySelector('.hero-name');
+  if (!name) return;
+  setInterval(() => {
+    name.style.textShadow = `${(Math.random()-0.5)*4}px 0 var(--red), ${(Math.random()-0.5)*4}px 0 var(--azure)`;
+    setTimeout(() => { name.style.textShadow = ''; }, 80);
+  }, 4000);
+})();
+ 
+/* ═══════════════════════════════════════════
+   6. ACTIVE NAV HIGHLIGHT ON SCROLL
+═══════════════════════════════════════════ */
+(function() {
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) cur = s.id;
+    });
+    links.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--white)' : '';
+    });
+  });
+})();
+</script>
+</body>
+</html>
+ 
