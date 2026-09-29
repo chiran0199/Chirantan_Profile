@@ -1,0 +1,188 @@
+[
+  {
+    "original": "./logo.png",
+    "path": "assets/brand/logo.png",
+    "bytes": 2738470,
+    "sha256": "bf2425269b3a88ef64ce891549bfca3ac8d0f6b8468fbd23930d68605ad53fb2"
+  },
+  {
+    "original": "./krutanic-meta-dashboard.png",
+    "path": "assets/analytics/krutanic-meta-dashboard.png",
+    "bytes": 220226,
+    "sha256": "f16a245212f69066cfb3d3b3083bdf13e876b186641f29027f86933d7a9c2249"
+  },
+  {
+    "original": "./meta-ads-creative-report.png",
+    "path": "assets/analytics/meta-ads-creative-report.png",
+    "bytes": 314419,
+    "sha256": "a89879d2c726c0d28f58a50034a6202da87b543b162e805571b1bca3af5f0665"
+  },
+  {
+    "original": "./meta-ads-overview-report.png",
+    "path": "assets/analytics/meta-ads-overview-report.png",
+    "bytes": 307096,
+    "sha256": "657b71c397f9a885eca9282590289078037fccf2e38a25667a7bedeccaa87924"
+  },
+  {
+    "original": "./krutanic-ads-manager-screenshot.png",
+    "path": "assets/analytics/krutanic-ads-manager-screenshot.png",
+    "bytes": 256775,
+    "sha256": "c36ad73cdde39863bd0ee78030c4b4eda84e524528345014952731b625c41b7e"
+  },
+  {
+    "original": "./escape-plan-google-search.png",
+    "path": "assets/analytics/escape-plan-google-search.png",
+    "bytes": 232142,
+    "sha256": "db04e449fde59d78a9933a26e762e1f6b46d099a144e9a10272f1f2d0c81f050"
+  },
+  {
+    "original": "./escape-plan-meta-retargeting.png",
+    "path": "assets/analytics/escape-plan-meta-retargeting.png",
+    "bytes": 208605,
+    "sha256": "bbd66b7ad9281cb709c5554041ba422f8a2ffba564e7a1f2d8be942f580b6012"
+  },
+  {
+    "original": "./google-ads-search-report.png",
+    "path": "assets/analytics/google-ads-search-report.png",
+    "bytes": 400615,
+    "sha256": "8bf0a5e3f171d1ab833219f194c004495081d75d8c7059ee427c2c974db0fd64"
+  },
+  {
+    "original": "./google-ads-daily-overview.png",
+    "path": "assets/analytics/google-ads-daily-overview.png",
+    "bytes": 281480,
+    "sha256": "e1fa11e263451f249bb47d4e53e2416676f5012d47a46095d1d80a5b95898df5"
+  },
+  {
+    "original": "./dashboard-concept-01.png",
+    "path": "assets/analytics/dashboard-concept-01.png",
+    "bytes": 2120590,
+    "sha256": "97bd765937a0665be7c88a735a627f8731a4f81c2cf955f65d4e897d8e4aebbb"
+  },
+  {
+    "original": "./dashboard-concept-02.png",
+    "path": "assets/analytics/dashboard-concept-02.png",
+    "bytes": 1972715,
+    "sha256": "ad5e90445acf8c33b51530e1db139c79a5bf5549a900ba1444eba5de9117c2bd"
+  },
+  {
+    "original": "./dashboard-concept-03.png",
+    "path": "assets/analytics/dashboard-concept-03.png",
+    "bytes": 2128946,
+    "sha256": "4943ddc1bf19e3783b7111dff6c66f4b6c788135aa3ffc8e3aa142e4d70baa3e"
+  },
+  {
+    "original": "./dashboard-concept-04.png",
+    "path": "assets/analytics/dashboard-concept-04.png",
+    "bytes": 1927065,
+    "sha256": "5abecd1ee1cc9650e12c1c3a1f55670f5b0fe604d2831e2da30bdda87f4c2bbb"
+  },
+  {
+    "original": "./dashboard-concept-05.png",
+    "path": "assets/analytics/dashboard-concept-05.png",
+    "bytes": 2017700,
+    "sha256": "b117a64a7ff1bec8d030ecd642e424c879e4d20fdb73deac0646eaa03a1e97c6"
+  },
+  {
+    "original": "./dashboard-concept-06.png",
+    "path": "assets/analytics/dashboard-concept-06.png",
+    "bytes": 1931220,
+    "sha256": "b2bfed9c79e2e59a28b58628ff6d8e6dbfa4d52ad5255db88947108f197945d9"
+  },
+  {
+    "original": "./dashboard-concept-07.png",
+    "path": "assets/analytics/dashboard-concept-07.png",
+    "bytes": 1909757,
+    "sha256": "854a3634a0c6298fd3920395e490474b70c7f5423b685f5216e9ddf858b81b7c"
+  },
+  {
+    "original": "./dashboard-concept-08.png",
+    "path": "assets/analytics/dashboard-concept-08.png",
+    "bytes": 2030995,
+    "sha256": "b7e64ad4c57d130a3c7fec9edb64298a107e6b2e8e999ce71b6cb5c459394987"
+  },
+  {
+    "original": "./dashboard-concept-09.png",
+    "path": "assets/analytics/dashboard-concept-09.png",
+    "bytes": 2084700,
+    "sha256": "fe7b92bbaa56446e1e8c51744b54f6c6b7ede513a4236acee72f98f6373b78c6"
+  },
+  {
+    "original": "./dashboard-concept-10.png",
+    "path": "assets/analytics/dashboard-concept-10.png",
+    "bytes": 1824953,
+    "sha256": "4fae2b3fc9e5d5520ee1a1e673503a6f8992a59cfce885d718aa709dfe2c2a73"
+  },
+  {
+    "original": "./dashboard-concept-11.png",
+    "path": "assets/analytics/dashboard-concept-11.png",
+    "bytes": 1782164,
+    "sha256": "bc021774cbd75aeddecd26a801d142e147bc9b71e3163abbbfe15e1aa99d768a"
+  },
+  {
+    "original": "./dashboard-concept-12.png",
+    "path": "assets/analytics/dashboard-concept-12.png",
+    "bytes": 1811667,
+    "sha256": "793ef081c0617c2c94dd8b27c9407cf5283ab90d56df282eb3a1d1f3832f818e"
+  },
+  {
+    "original": "./certificate-advanced-google-analytics.jpg",
+    "path": "assets/certifications/certificate-advanced-google-analytics.jpg",
+    "bytes": 280635,
+    "sha256": "3ad55a3640c2a5e3096681e100835686e2dae1a44ba617890e0c1acffdd908d4"
+  },
+  {
+    "original": "./certificate-marketing-analytics-dashboard.jpg",
+    "path": "assets/certifications/certificate-marketing-analytics-dashboard.jpg",
+    "bytes": 483841,
+    "sha256": "9267f2b3a7a733d07610dfa23a66651ca2fd672eb61677ecea7d5948d002143d"
+  },
+  {
+    "original": "./certificate-excel-power-tools.jpg",
+    "path": "assets/certifications/certificate-excel-power-tools.jpg",
+    "bytes": 446798,
+    "sha256": "38a1aecc226f7254752079d23d05a0457d70b4dd8a1bebdcb17aba157d41f173"
+  },
+  {
+    "original": "./certificate-brand-to-image.jpg",
+    "path": "assets/certifications/certificate-brand-to-image.jpg",
+    "bytes": 493421,
+    "sha256": "063f120f941c52d33332dc1b81b8235109855d98ae2ec204eae0f8cab14c91ac"
+  },
+  {
+    "original": "./certificate-marketing-strategy.jpg",
+    "path": "assets/certifications/certificate-marketing-strategy.jpg",
+    "bytes": 433295,
+    "sha256": "78184d41edf534419543c1ace963346d65fb258f855097bad65543858427fce6"
+  },
+  {
+    "original": "./certificate-generative-ai.jpg",
+    "path": "assets/certifications/certificate-generative-ai.jpg",
+    "bytes": 410693,
+    "sha256": "122e6a82d25ec4d4077f1a5bb80b4c2fbe2ffee28b1f5c4aecb292065e83cb74"
+  },
+  {
+    "original": "./certificate-machine-learning-python.jpg",
+    "path": "assets/certifications/certificate-machine-learning-python.jpg",
+    "bytes": 427584,
+    "sha256": "c97bf2bd94eebaeca5c5b0a488fe912e1f855605d0443339131081a9fe7b206a"
+  },
+  {
+    "original": "./certificate-programmatic-prompting.jpg",
+    "path": "assets/certifications/certificate-programmatic-prompting.jpg",
+    "bytes": 470339,
+    "sha256": "93d40301bccf39e8db1382d692665b1b7158d5ab63e16e8966d1a01f11e209a6"
+  },
+  {
+    "original": "./certificate-snowpark-ml.jpg",
+    "path": "assets/certifications/certificate-snowpark-ml.jpg",
+    "bytes": 477640,
+    "sha256": "a0e3075b3a1d14ac9285252edfb97e158effc000b28922115fb18422e0d3c430"
+  },
+  {
+    "original": "./certificate-brand-storytelling.jpg",
+    "path": "assets/certifications/certificate-brand-storytelling.jpg",
+    "bytes": 481729,
+    "sha256": "037cf2724d77eba0e3cb27d972cb1fe4d33f90e4ecf6c34bc807b339322b0497"
+  }
+]

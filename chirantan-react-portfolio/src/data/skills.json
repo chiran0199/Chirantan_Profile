@@ -1,0 +1,64 @@
+[
+  {
+    "title": "B2B Sales & CRM",
+    "items": [
+      "Salesforce CRM",
+      "Pipeline Mgmt",
+      "Cold Calling",
+      "Lead Qualification",
+      "Negotiation",
+      "Follow-up Mgmt"
+    ]
+  },
+  {
+    "title": "Digital Advertising",
+    "items": [
+      "Google Ads",
+      "Meta Ads",
+      "Campaign Audits",
+      "Budget Mgmt",
+      "Performance Max",
+      "Ad Creative"
+    ]
+  },
+  {
+    "title": "SEO & Content",
+    "items": [
+      "Keyword Research",
+      "Blog Writing",
+      "Backlink Building",
+      "On-page SEO",
+      "Content Strategy"
+    ]
+  },
+  {
+    "title": "Data & Analytics",
+    "items": [
+      "Google Analytics",
+      "Power BI",
+      "Advanced Excel",
+      "Data Visualisation",
+      "Python"
+    ]
+  },
+  {
+    "title": "Lead Generation",
+    "items": [
+      "LinkedIn Sales Nav",
+      "Apollo.io",
+      "Lusha",
+      "Email Outreach",
+      "Cold Prospecting"
+    ]
+  },
+  {
+    "title": "Marketing Strategy",
+    "items": [
+      "Brand Management",
+      "Market Research",
+      "Social Listening",
+      "Consumer Behaviour",
+      "Distributor Mgmt"
+    ]
+  }
+]
